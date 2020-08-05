@@ -3,6 +3,11 @@ var app = new Vue({
   data: {
     message: "",
     todos: [],
+    actives: [],
+    completeds: [],
+    all: 0,
+    active: 0,
+    completed: 0
   },
   methods: {
     addItem: function () {
@@ -14,12 +19,18 @@ var app = new Vue({
         isDone: false,
       };
       this.todos.push(todo);
+      this.actives.push(todo)
 
       this.message = "";
     },
     deleteItem: function (index) {
       this.todos.splice(index, 1);
-      console.log(index);
-    },
+    }
   },
+  computed: {
+    countAll: function () {
+      // console.log(this.todos.length)
+      this.all = this.todos.length
+    }
+  }
 });
